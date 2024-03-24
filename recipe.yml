@@ -24,6 +24,7 @@ modules:
 - name: example-commands
   type: shell
   commands:
+  - sed -i 's/KEYMAP=n/KEYMAP=y/g' /etc/initramfs-tools/initramfs.conf
   - echo "file contents of vconsole.conf"
   - cat /etc/vconsole.conf
   - cat /etc/default/keyboard
