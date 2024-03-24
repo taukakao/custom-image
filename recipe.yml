@@ -24,6 +24,9 @@ modules:
 - name: example-commands
   type: shell
   commands:
+  - echo "file contents of vconsole.conf"
+  - cat /etc/vconsole.conf
+  - cat /etc/default/keyboard
   - echo "locale folder:"
   - ls /usr/lib/locale/
   - echo "all locales:"
