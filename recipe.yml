@@ -1,4 +1,4 @@
-base: ghcr.io/vanilla-os/desktop:main
+base: ghcr.io/vanilla-os/vm:main
 name: Custom Vanilla Desktop
 id: vanilla-custom
 labels:
@@ -24,12 +24,11 @@ modules:
 - name: example-commands
   type: shell
   commands:
-  - echo Example output
-
-- name: example-modules
-  type: includes
-  includes:
-    - modules/50-install-debs
+  - locale -a
+  - locale-gen
+  - locale -a
+  - cp -a /etc/locales/* /usr/lib/locale/
+  - locale -a
 
 # Put your custom actions before this comment
 
