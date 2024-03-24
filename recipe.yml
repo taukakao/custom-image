@@ -24,9 +24,18 @@ modules:
 - name: example-commands
   type: shell
   commands:
+  - echo "locale folder:"
+  - ls /usr/lib/locale/
+  - echo "all locales:"
   - locale -a
+  - mkdir /etc/locales/
   - locale-gen
+  - echo "all locales:"
   - locale -a
+  - echo "etc locale folder:"
+  - ls /etc/locales/
+  - echo "usr locale folder:"
+  - ls /usr/lib/locale/
   - cp -a /etc/locales/* /usr/lib/locale/
   - locale -a
 
