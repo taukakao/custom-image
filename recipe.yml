@@ -20,21 +20,10 @@ stages:
 
   # Put your custom actions behind this comment
 
-  - name: example-packages
-    type: apt
-    source:
-      packages:
-      - vim
-
-  - name: example-commands
+  - name: remove-brltty
     type: shell
     commands:
-    - echo Example output
-
-  - name: example-modules
-    type: includes
-    includes:
-      - modules/999-password-leak-mitigation.yml
+    - apt-get remove -y brltty
 
   # Put your custom actions before this comment
 
