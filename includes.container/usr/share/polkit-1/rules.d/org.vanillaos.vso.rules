@@ -10,4 +10,6 @@ polkit.addRule(function (action, subject) {
     polkit.log("subject=" + subject);
     return polkit.Result.YES;
   }
+
+  return polkit.Result.NOT_HANDLED;
 });
