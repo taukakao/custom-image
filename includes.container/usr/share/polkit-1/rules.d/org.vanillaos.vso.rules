@@ -11,5 +11,17 @@ polkit.addRule(function (action, subject) {
     return polkit.Result.YES;
   }
 
+  if (
+    (
+      action.id == "org.vanillaos.vso.distrobox" ||
+      action.id == "org.vanillaos.vso.podman"
+    ) &&
+    subject.isInGroup("sudo")
+  ) {
+    polkit.log("action=" + action);
+    polkit.log("subject=" + subject);
+    return polkit.Result.AUTH_ADMIN_KEEP;
+  }
+
   return polkit.Result.NOT_HANDLED;
 });
