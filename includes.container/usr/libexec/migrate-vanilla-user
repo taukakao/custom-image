@@ -1,0 +1,25 @@
+#!/bin/bash
+
+FIRST_SETUP_GROUP="vanilla-first-setup"
+FIRST_SETUP_USER="vanilla"
+
+if getent group "$FIRST_SETUP_GROUP" > /dev/null 2>&1; then
+    rm /etc/systemd/system/multi-user.target.wants/migrate-installation-if-old.service
+    exit 0
+fi
+
+groupadd "$FIRST_SETUP_GROUP"
+
+if id "$FIRST_SETUP_USER" &>/dev/null; then
+    if groups "$FIRST_SETUP_USER" | grep -qwv "$FIRST_SETUP_GROUP"; then
+        echo "Adding $FIRST_SETUP_USER to group $FIRST_SETUP_GROUP..."
+        usermod -aG "$FIRST_SETUP_GROUP" "$FIRST_SETUP_USER"
+        if [ "$?" -ne "0" ]; then
+          echo Failed to add user to group
+          exit 1
+        fi
+    fi
+fi
+
+rm /etc/systemd/system/multi-user.target.wants/migrate-installation-if-old.service
+exit 0
