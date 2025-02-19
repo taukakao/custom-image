@@ -1,0 +1,10 @@
+[Unit]
+Description=Add vanilla user to first-setup group
+
+[Service]
+ExecStart=/usr/libexec/migrate-vanilla-user
+Type=simple
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
