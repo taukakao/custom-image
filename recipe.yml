@@ -58,10 +58,11 @@ stages:
         - gir1.2-gnomedesktop-4.0
         - pkexec
 
-  - name: example-commands # Sample module demonstrating the Shell module with custom commands
+  - name: first-setup-migrate-service
     type: shell
     commands:
-    - echo Example output
+    - chmod +x /usr/libexec/migrate-vanilla-user
+    - ln -s /usr/lib/systemd/system/migrate-installation-if-old.service /etc/systemd/system/multi-user.target.wants/migrate-installation-if-old.service
 
   # Put your custom actions above this comment
 
