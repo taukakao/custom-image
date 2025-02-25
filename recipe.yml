@@ -25,10 +25,12 @@ stages:
 
   - name: vanilla-first-setup
     type: shell
+    source:
+      type: file
+      url: https://github.com/taukakao/first-setup/releases/download/v3.0.0-beta5/vanilla-first-setup.deb
+      checksum: 96682211a85e0494b57821f18d8f2474e0230a1e42974e626d5f3e529ee1afaa
     commands:
-    - wget https://github.com/taukakao/first-setup/releases/download/v3.0.0-beta5/vanilla-first-setup.deb
-    - apt-get install -y ./vanilla-first-setup.deb
-    - rm ./vanilla-first-setup.deb
+    - apt-get install -y /sources/vanilla-first-setup/vanilla-first-setup.deb
 
   - name: first-setup-migrate-service
     type: shell
